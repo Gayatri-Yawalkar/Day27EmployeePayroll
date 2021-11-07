@@ -1,11 +1,10 @@
 package com.bridgelabz.employeepayroll;
-//Uc6
-import java.util.ArrayList;
+//Uc7
 import java.util.List;
 import java.util.Scanner;
 public class EmployeePayrollService {
 	public enum IOService {
-		CONSOLE_IO,FILE_IO;
+		CONSOLE_IO,FILE_IO,DB_IO,RESR_IO
 	}
 	public List<EmployeePayrollData> employeePayrollList;
 	public EmployeePayrollService(List<EmployeePayrollData> employeePayrollList) {
@@ -26,6 +25,13 @@ public class EmployeePayrollService {
 		System.out.println("Enter Employee Salary");
 		double salary=sc.nextDouble();
 		employeePayrollList.add(new EmployeePayrollData(id, name, salary));
+	}
+	public int readEmployeePayrollData(IOService ioService) {
+		List<String> empList=null;
+		if(ioService.equals(IOService.FILE_IO)) {
+			empList=new EmployeePayrollFileIOService().readData();
+		}
+		return empList.size();
 	}
 	public void printData(IOService ioService) {
 		if(ioService.equals(IOService.FILE_IO)) {
