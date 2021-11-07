@@ -1,5 +1,5 @@
 package com.bridgelabz.employeepayroll;
-//Uc4
+//Uc5
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -27,5 +27,10 @@ public class EmployeePayrollService {
 		System.out.println("Enter Employee Salary");
 		double salary=sc.nextDouble();
 		employeePayrollList.add(new EmployeePayrollData(id, name, salary));
+	}
+	public void printData(IOService ioService) {
+		if(ioService.equals(IOService.FILE_IO)) {
+			new EmployeePayrollFileIOService().printdata();
+		}
 	}
 }

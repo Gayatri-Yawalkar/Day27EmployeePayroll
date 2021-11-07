@@ -1,5 +1,5 @@
 package com.bridgelabz.junit;
-//Uc4
+//Uc5
 import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import org.junit.Test;
@@ -13,6 +13,7 @@ public class EmployeePayrollServiceTest {
 					               new EmployeePayrollData(3,"Sapna",30000.0) }; 					  
 		EmployeePayrollService employeePayrollService=new EmployeePayrollService(Arrays.asList(arrayOfEmps));
 		int entries=employeePayrollService.writeEmployeePayrollData(EmployeePayrollService.IOService.FILE_IO);
+		employeePayrollService.printData(EmployeePayrollService.IOService.FILE_IO);
 		assertEquals(3,entries);
 	}
 }

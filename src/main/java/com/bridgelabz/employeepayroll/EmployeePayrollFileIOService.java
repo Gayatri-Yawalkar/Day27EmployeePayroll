@@ -18,4 +18,12 @@ public class EmployeePayrollFileIOService {
 				e.printStackTrace();
 		}
 	}
+	public void printdata() {
+		try {
+			Files.lines(new File(PAYROLL_FILE_NAME).toPath())
+			.forEach(System.out::println);
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
