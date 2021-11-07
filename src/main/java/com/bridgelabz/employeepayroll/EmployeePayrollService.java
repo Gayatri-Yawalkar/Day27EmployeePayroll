@@ -1,5 +1,5 @@
 package com.bridgelabz.employeepayroll;
-//Uc5
+//Uc6
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,13 +11,12 @@ public class EmployeePayrollService {
 	public EmployeePayrollService(List<EmployeePayrollData> employeePayrollList) {
 		this.employeePayrollList=employeePayrollList;
 	}
-	public int writeEmployeePayrollData(IOService ioService) {
+	public void writeEmployeePayrollData(IOService ioService) {
 		if(ioService.equals(IOService.CONSOLE_IO)) {
 			System.out.println("\nWriting Employee Payroll to Console\n"+employeePayrollList);
 		} else if(ioService.equals(IOService.FILE_IO)) {
 			new EmployeePayrollFileIOService().writeData(employeePayrollList);
 		}
-		return employeePayrollList.size();
 	}
 	public void readEmployeePayrollData(Scanner sc) {
 		System.out.println("Enter Employee id");
@@ -32,5 +31,11 @@ public class EmployeePayrollService {
 		if(ioService.equals(IOService.FILE_IO)) {
 			new EmployeePayrollFileIOService().printdata();
 		}
+	}
+	public long countEntries(IOService ioService) {
+		if(ioService.equals(IOService.FILE_IO)) {
+			return new EmployeePayrollFileIOService().countEntries();
+		}
+		return 0;
 	}
 }
